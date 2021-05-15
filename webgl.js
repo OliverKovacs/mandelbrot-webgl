@@ -2,7 +2,7 @@
 
 export default class WebGLShaderRenderer {
 
-    vertexShaderPath = "./shader/vertex.glsl";
+    vertexShaderPath = "shader/vertex.glsl";
     programInfo = {
         shaders: [
             { type: "vertex", },
@@ -22,7 +22,7 @@ export default class WebGLShaderRenderer {
     };
 
     static downloadShader(path) {
-        return fetch(path).then(res => res.text())
+        return fetch(`${window.location.href}${path}`).then(res => res.text())
     }
 
     initCanvas() {
