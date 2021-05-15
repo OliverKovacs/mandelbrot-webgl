@@ -1,0 +1,42 @@
+precision highp float;
+
+uniform vec2 resolution;
+uniform vec2 position;
+uniform float zoom;
+uniform float time;
+const float i = 1000.0;
+const float n = 4.0;
+
+void main() {
+    vec2 uv = 2.0 * (gl_FragCoord.xy / resolution.y) - vec2(resolution.x / resolution.y, 1.0);
+    uv.y *= -1.0;
+    vec2 _0 = uv / zoom - position;
+
+    float x = _0.x;
+    float y = _0.y;
+    float o;
+
+    for (float m = 0.0; m < i; m++) {
+        if (!(x * x + y * y < 4.0)) {
+            o = m;
+            break;
+        }
+        float xtmp = pow((x * x + y * y), (n / 2.0)) * cos(n * atan(y / x)) + _0.x;
+        y = pow((x * x + y * y), (n / 2.0)) *sin(n * atan(y / x)) + _0.y;
+        x = xtmp;
+    }
+
+    float speed = 0.00002;
+    float k = 0.01;
+    o *= (3.1415 + k) / i;
+    gl_FragColor = vec4(
+        (cos(61.0 * (time * speed + o - k)) + 1.0) / 2.0,
+        (cos(51.0 * (time * speed + o - k)) + 1.0) / 2.0,
+        (cos(11.0 * (time * speed + o - k)) + 1.0) / 2.0,
+        1.0
+    );
+
+    if (o < 0.025) {
+        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+}
