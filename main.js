@@ -32,11 +32,11 @@ window.onload = async () => {
         "zoom",
         "time",
     ];
-    await renderer.setShader("/shader/mandelbrot.glsl");
+    await renderer.setShader("./shader/mandelbrot.glsl");
 
-    document.getElementById("mandelbrot").onclick = () => changeShader("/shader/mandelbrot.glsl", renderer);
-    document.getElementById("burning_ship").onclick = () => changeShader("/shader/burning_ship.glsl", renderer);
-    document.getElementById("multibrot").onclick = () => changeShader("/shader/multibrot.glsl", renderer);
+    document.getElementById("mandelbrot").onclick = () => changeShader("./shader/mandelbrot.glsl", renderer);
+    document.getElementById("burning_ship").onclick = () => changeShader("./shader/burning_ship.glsl", renderer);
+    document.getElementById("multibrot").onclick = () => changeShader("./shader/multibrot.glsl", renderer);
     let fps = document.getElementById("fps");
     renderer.callback = (gl, shaderProgram) => {
         gl.uniform2fv(shaderProgram.uniforms.resolution, resolution);

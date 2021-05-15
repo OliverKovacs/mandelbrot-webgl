@@ -2,7 +2,7 @@
 
 export default class WebGLShaderRenderer {
 
-    vertexShaderPath = "/shader/vertex.glsl";
+    vertexShaderPath = "./shader/vertex.glsl";
     programInfo = {
         shaders: [
             { type: "vertex", },
