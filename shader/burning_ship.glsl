@@ -1,6 +1,7 @@
 precision highp float;
 
 uniform vec2 resolution;
+uniform vec4 background;
 uniform vec2 position;
 uniform float zoom;
 uniform float time;
@@ -36,6 +37,6 @@ void main() {
     );
 
     if (o < 0.025) {
-        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+        gl_FragColor = background;
     }
 }
