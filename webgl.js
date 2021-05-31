@@ -2,7 +2,7 @@
 
 export default class WebGLShaderRenderer {
 
-    vertexShaderPath = "/shader/vertex.glsl";
+    vertexShaderPath = "./shader/vertex.glsl";
     programInfo = {
         shaders: [
             { type: "vertex", },
@@ -63,9 +63,9 @@ export default class WebGLShaderRenderer {
         this.vertexCount = this.vertices.length / 4;
     }
 
-    async setShader(path) {
-        this.programInfo.shaders[0].code = await WebGLShaderRenderer.downloadShader(this.vertexShaderPath);
-        this.programInfo.shaders[1].code = await WebGLShaderRenderer.downloadShader(path);
+    async setShader(vertex, fragment) {
+        this.programInfo.shaders[0].code = await WebGLShaderRenderer.downloadShader(vertex);
+        this.programInfo.shaders[1].code = await WebGLShaderRenderer.downloadShader(fragment);
 
         this.shaderProgram = this.buildShaderProgram();
 
