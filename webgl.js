@@ -21,8 +21,9 @@ export default class WebGLShaderRenderer {
         this.initVertexBuffer();
     };
 
-    static downloadShader(path) {
-        return fetch(path).then(res => res.text())
+    static async downloadShader(path) {
+        const response = await fetch(path);
+        return response.text();
     }
 
     initCanvas() {
